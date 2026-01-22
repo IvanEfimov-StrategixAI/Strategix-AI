@@ -1,0 +1,537 @@
+Поскольку создание полноценного приложения "с нуля" внутри одного сообщения невозможно из-за ограничений по объему текста, я предоставлю тебе подробное руководство и пример структуры кода, который ты сможешь использовать как основу для своего предприятия-класса ToDo-приложения.
+
+### Структура проекта
+
+bash
+todo-app/
+│
+├── public/
+│   └── index.html
+│   
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   ├── TaskList.jsx
+│   │   ├── AddTaskForm.jsx
+│   │   ├── TaskItem.jsx
+│   │   ├── PriorityPicker.jsx
+│   │   ├── DueDateInput.jsx
+│   │   ├── TaskDetailsModal.jsx
+│   │   └── styles.css
+│   
+├── assets/
+│   ├── images/
+│   ├── fonts/
+│   └── icons/
+│  
+├── package.json
+├── webpack.config.js
+
+
+---
+
+## HTML + CSS
+
+### `index.html`
+
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professionally generated business application">
+    <meta name="keywords" content="business, startup, application, enterprise">
+    <meta name="author" content="Strategix AI Pro">
+    <meta property="og:title" content="Business Application">
+    <meta property="og:description" content="AI-generated professional business application">
+    <meta property="og:type" content="website">
+    
+    <meta charset="UTF-8"/>
+    <title>To Do App</title>
+    <link rel="stylesheet" href="/src/components/styles.css"/>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <style>
+        /* Production optimizations */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Performance optimizations */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .lazy-loaded {
+            opacity: 1;
+        }
+        
+        /* Print styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="app-body">
+<div id="root"></div>
+<script type="module" src="/src/index.js"></script>
+
+    <!-- Analytics -->
+    <script>
+        // Production error tracking
+        window.addEventListener('error', function(e) {
+            console.error('Application error:', e.error);
+        });
+        
+        // Performance monitoring
+        if ('PerformanceObserver' in window) {
+            const observer = new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) {
+                    console.log('Performance:', entry.name, entry.duration.toFixed(2), 'ms');
+                }
+            });
+            observer.observe({ entryTypes: ['measure', 'paint', 'largest-contentful-paint'] });
+        }
+        
+        // Lazy loading images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('.lazy-load');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.classList.add('lazy-loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => imageObserver.observe(img));
+            } else {
+                // Fallback
+                lazyImages.forEach(img => img.classList.add('lazy-loaded'));
+            }
+        });
+        
+        // Service Worker registration (production only)
+        if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(
+                    function(registration) {
+                        console.log('ServiceWorker registered:', registration.scope);
+                    },
+                    function(err) {
+                        console.log('ServiceWorker registration failed:', err);
+                    }
+                );
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+### `styles.css` (в папке `/src/components`)
+
+CSS-файл будет содержать современные стили Flexbox, Grid и переменных CSS (`--color-primary`, `--background-color`, etc.).
+
+css
+/* Базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app-body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 1rem;
+    background-color: var(--header-bg-color);
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+    background-color: var(--footer-bg-color);
+}
+
+.task-list-container {
+    max-width: 900px;
+    margin: auto;
+    padding-top: 1.5rem;
+}
+
+.task-item {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--task-card-bg-color);
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.task-details-modal {
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+---
+
+## JSX компоненты
+
+### Компоненты React
+
+#### `Header.jsx`
+
+jsx
+import { useState } from 'react';
+
+const Header = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    
+    return (
+        <header>
+            <h1 style={{marginLeft: isMenuOpen ? 'auto' : ''}}>My Todo List</h1>
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>{isMenuOpen ? 'Close Menu' : 'Open Menu'}</button>
+        </header>
+    );
+};
+export default Header;
+
+
+#### `Footer.jsx`
+
+jsx
+const Footer = () => {
+    return (
+        <footer>
+            © 2023 My Company Name. All rights reserved.
+        </footer>
+    )
+};
+export default Footer;
+
+
+#### `AddTaskForm.jsx`
+
+jsx
+import { useState } from 'react';
+
+const AddTaskForm = ({ addTask }) => {
+    const [taskTitle, setTaskTitle] = useState('');
+    const [priority, setPriority] = useState('low');
+    const [dueDate, setDueDate] = useState(new Date());
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        if (!taskTitle) return alert("Название задачи обязательно");
+        
+        // Добавляем новую задачу
+        addTask({ title: taskTitle, priority, dueDate });
+        setTaskTitle('');
+        setPriority('low');
+        setDueDate(new Date());
+    };
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input 
+                type="text"
+                placeholder="Добавьте название задачи..."
+                value={taskTitle} 
+                onChange={(e) => setTaskTitle(e.target.value)}
+            />
+            <label>Приоритет:</label>
+            <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+                <option value="high">Высокий</option>
+                <option value="medium">Средний</option>
+                <option value="low">Низкий</option>
+            </select>
+            <label>Срок выполнения:</label>
+            <DueDateInput dateValue={dueDate} onChange={setDueDate}/>
+            <button type="submit">Добавить задачу</button>
+        </form>
+    );
+};
+export default AddTaskForm;
+
+
+#### `TaskList.jsx`
+
+jsx
+import TaskItem from './TaskItem';
+
+const TaskList = ({ tasks, deleteTask, updateTask }) => {
+    return (
+        <section className="task-list-container">
+            {tasks.map(task =>
+                <TaskItem key={task.id} {...task} deleteTask={deleteTask} updateTask={updateTask} />
+            )}
+        </section>
+    );
+};
+export default TaskList;
+
+
+#### `TaskItem.jsx`
+
+jsx
+import PriorityPicker from './PriorityPicker';
+import DueDateInput from './DueDateInput';
+import TaskDetailsModal from './TaskDetailsModal';
+
+const TaskItem = ({ id, title, description, priority, dueDate, completed, deleteTask, updateTask }) => {
+    const [showDetails, setShowDetails] = useState(false);
+
+    const toggleDetails = () => setShowDetails(!showDetails);
+
+    return (
+        <article className="task-item">
+            <div className="content">
+                <p className="title">{title}</p>
+                <p className="description">{description || '(нет описания)'}</p>
+                <PriorityPicker priority={priority} onUpdate={newPriority => updateTask(id, { priority: newPriority })} />
+                <DueDateInput dateValue={dueDate} onChange={date => updateTask(id, { dueDate: date })}
+                              disabled={completed} />
+                <button onClick={toggleDetails}>Подробнее</button>
+            </div>
+            { showDetails && <TaskDetailsModal taskId={id} details={{
+                    title,
+                    description,
+                    priority,
+                    dueDate
+                }} />}
+            <button onClick={() => deleteTask(id)}>Удалить задачу</button>
+        </article>
+    );
+};
+export default TaskItem;
+
+
+---
+
+## Модули и логика работы приложения
+
+### Логика взаимодействия задач
+
+js
+// src/logic/tasks.js
+
+class TasksService {
+    constructor() {
+        this.tasks = [];
+    }
+
+    getAllTasks() {
+        return [...this.tasks];
+    }
+
+    createTask(title, priority='low', dueDate=new Date()) {
+        const task = {
+            id: Math.random().toString(36).substr(2, 9),
+            title,
+            priority,
+            dueDate,
+            completed: false
+        };
+        this.tasks.push(task);
+        return task;
+    }
+
+    updateTask(id, updates) {
+        const idx = this.tasks.findIndex(t => t.id === id);
+        if (idx !== -1) {
+            Object.assign(this.tasks[idx], updates);
+        }
+    }
+
+    removeTask(id) {
+        const idx = this.tasks.findIndex(t => t.id === id);
+        if (idx !== -1) {
+            this.tasks.splice(idx, 1);
+        }
+    }
+}
+
+const tasksService = new TasksService();
+
+export default tasksService;
+
+
+### Основной компонент приложения
+
+jsx
+import { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import TasksService from './logic/tasks';
+import AddTaskForm from './components/AddTaskForm';
+import TaskList from './components/TaskList';
+
+function App() {
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/tasks'); // Имитация API-запроса
+                const data = await response.json();
+                setTasks(data);
+            } catch (error) {
+                console.error(error.message);
+            }
+        };
+        fetchData();
+    }, []);
+
+    const addTask = task => {
+        tasksService.createTask(task.title, task.priority, task.dueDate);
+        setTasks([...tasks, task]);
+    };
+
+    const deleteTask = id => {
+        tasksService.removeTask(id);
+        setTasks(tasks.filter(t => t.id !== id));
+    };
+
+    const updateTask = (id, updates) => {
+        tasksService.updateTask(id, updates);
+        const updatedTask = tasks.find(t => t.id === id);
+        setTasks(tasks.map(t => t.id === id ? updatedTask : t));
+    };
+
+    return (
+        <Router>
+            <nav>
+                <Link to="/">Главная</Link>
+                <Link to="/about">О нас</Link>
+            </nav>
+            <Route exact path="/">
+                <AddTaskForm addTask={addTask} />
+                <TaskList tasks={tasks} deleteTask={deleteTask} updateTask={updateTask} />
+            </Route>
+            <Route path="/about">
+                <h1>О компании</h1>
+                <p>Мы делаем лучшие списки дел!</p>
+            </Route>
+        </Router>
+    );
+}
+
+export default App;
+
+
+---
+
+## Webpack конфиг
+
+javascript
+// webpack.config.js
+const path = require('path');
+
+module.exports = {
+    entry: './src/index.js',
+    output: {
+        filename: 'bundle.js',
+        path: path.resolve(__dirname, 'public')
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader'
+            },
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader']
+            }
+        ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx'],
+        alias: {
+            '@': path.resolve(__dirname, 'src'),
+        }
+    },
+    devServer: {
+        contentBase: path.join(__dirname, 'public'),
+        compress: true,
+        port: 3000
+    }
+};
+
+
+---
+
+## Пример использования анимации при добавлении новой задачи
+
+Для этого воспользуемся библиотекой Framer Motion от Tanner Linsley.
+
+jsx
+import { motion } from 'framer-motion';
+
+const AnimatedAddTaskForm = ({ addTask }) => {
+    const [taskTitle, setTaskTitle] = useState('');
+    const [priority, setPriority] = useState('low');
+    const [dueDate, setDueDate] = useState(new Date());
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        if (!taskTitle) return alert("Название задачи обязательно");
+
+        addTask({ title: taskTitle, priority, dueDate });
+        setTaskTitle('');
+        setPriority('low');
+        setDueDate(new Date());
+    };
+
+    return (
+        <motion.form initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     exit={{ opacity: 0 }}
+                     transition={{ duration: 0.3 }}>
+            ...
+        </motion.form>
+    );
+};
+
+
+---
+
+## Заключение
+
+Теперь у тебя есть все необходимые элементы для создания современного и профессионального ToDo-приложения. Следуя приведенной структуре и рекомендациям, ты можешь легко адаптировать приложение под свои нужды или расширить его функционалом.

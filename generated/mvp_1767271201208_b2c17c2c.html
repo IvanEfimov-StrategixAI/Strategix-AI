@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI HR Platform</title>
+  <!-- Подключаем шрифты -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" as="style" crossorigin />
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="app.js"></script>
+  <style>
+    :root {
+      --primary-color: #2e3440;
+      --secondary-color: #b48ead;
+      --accent-color: #8be9fd;
+      --text-color: #d8dee9;
+      --background-color: #2c3e50;
+      --light-text-color: #fafafa;
+      --dark-text-color: #222222;
+      --border-color: #434c5e;
+      --graph-color: #a3be8c;
+      --graph-accent: #ffc658;
+      --notification-bg: #eb5757;
+      --calendar-font-size: 1rem;
+      --calendar-border-radius: 0.25rem;
+      --calendar-day-height: 2.5rem;
+      --calendar-day-width: 2.5rem;
+    }
+  </style>
+</head>
+<body class="dark-theme">
+  <header role="banner">
+    <div class="container">
+      <h1>AI HR Platform</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Главная</a></li>
+          <li><a href="#candidates">Кандидаты</a></li>
+          <li><a href="#analytics">Анализ</a></li>
+          <li><a href="#notifications">Уведомления</a></li>
+          <li><a href="#calendar">Календарь</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content">
+    <section id="home">
+      <div class="container">
+        <h2>Добро пожаловать в AI HR Platform!</h2>
+        <p>Автоматизируйте процесс найма и отбора кандидатов.</p>
+        <button type="button" onclick="toggleDarkMode()">Переключить тему</button>
+      </div>
+    </section>
+
+    <section id="candidates">
+      <div class="container">
+        <h2>Кандидаты</h2>
+        <div class="grid-container">
+          <div class="candidate-card">
+            <img src="candidate.jpg" alt="Candidate Image" />
+            <div class="info">
+              <h3>Иван Иванов</h3>
+              <p>Frontend Developer</p>
+              <button type="button">Подробнее</button>
+            </div>
+          </div>
+          <!-- Добавляем еще несколько карточек -->
+        </div>
+      </div>
+    </section>
+
+    <section id="analytics">
+      <div class="container">
+        <h2>Интерактивные графики аналитики</h2>
+        <canvas id="analytics-chart"></canvas>
+      </div>
+    </section>
+
+    <section id="notifications">
+      <div class="container">
+        <h2>Система уведомлений</h2>
+        <div class="notification-box">
+          <span class="notification-icon notification-bg">!</span>
+          <p>Новое уведомление доступно!</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="calendar">
+      <div class="container">
+        <h2>Календарь собеседований</h2>
+        <div class="calendar-grid">
+          <div class="weekdays">
+            <div>Пн</div>
+            <div>Вт</div>
+            <div>Ср</div>
+            <div>Чт</div>
+            <div>Пт</div>
+            <div>Сб</div>
+            <div>Вс</div>
+          </div>
+          <div class="days">
+            <div data-date="2023-09-11">11</div>
+            <div data-date="2023-09-12">12</div>
+            <div data-date="2023-09-13">13</div>
+            <div data-date="2023-09-14">14</div>
+            <div data-date="2023-09-15">15</div>
+            <div data-date="2023-09-16">16</div>
+            <div data-date="2023-09-17">17</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <p>&copy; 2023 AI HR Platform</p>
+    </div>
+  </footer>
+</body>
+</html>
+<!-- styles.css -->
+css
+/* Основные стили */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+body.dark-theme {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+body.light-theme {
+  background-color: #ffffff;
+  color: #222222;
+}
+
+.grid-container {
+  display: grid;
+  gap: 20px;
+}
+
+.candidate-card {
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.notification-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+.notification-icon {
+  font-size: 1.5em;
+  color: white;
+  background-color: var(--notification-bg);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(auto, 1fr));
+  gap: 10px;
+}
+
+.weekdays div,
+.days div {
+  text-align: center;
+  font-size: var(--calendar-font-size);
+  border: 1px solid var(--border-color);
+  border-radius: var(--calendar-border-radius);
+  height: var(--calendar-day-height);
+  width: var(--calendar-day-width);
+  line-height: var(--calendar-day-height);
+  cursor: pointer;
+}
+
+.calendar-day-booked {
+  background-color: var(--graph-color);
+}
+
+.calendar-day-today {
+  background-color: var(--accent-color);
+}
+// app.js
+javascript
+document.addEventListener('DOMContentLoaded', () => {
+  const darkModeToggle = document.querySelector('button');
+  
+  // Переключение темы
+  function toggleDarkMode() {
+    if (document.body.classList.contains('dark-theme')) {
+      document.body.classList.remove('dark-theme');
+      document.body.classList.add('light-theme');
+    } else {
+      document.body.classList.remove('light-theme');
+      document.body.classList.add('dark-theme');
+    }
+  }
+
+  // Отрисовка графика аналитики
+  const analyticsChart = document.getElementById('analytics-chart');
+  new Chart(analyticsChart, {
+    type: 'line',
+    data: {
+      labels: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май'],
+      datasets: [
+        {
+          label: 'Количество кандидатов',
+          data: [100, 150, 200, 250, 300],
+          fill: true,
+          backgroundColor: 'rgba(163, 190, 140, 0.2)',
+          borderColor: 'var(--graph-color)'
+        },
+        {
+          label: 'Процент успешных интервью',
+          data: [20, 30, 40, 50, 60],
+          fill: true,
+          backgroundColor: 'rgba(255, 198, 88, 0.2)',
+          borderColor: 'var(--graph-accent'
+        }
+      ]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+
+  // Календарь собеседований
+  const calendarDays = document.querySelectorAll('.days > div');
+  calendarDays.forEach(day => {
+    day.addEventListener('click', () => {
+      alert(`Вы выбрали дату: ${day.dataset.date}`);
+    });
+  });
+});

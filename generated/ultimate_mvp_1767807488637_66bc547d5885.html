@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Professionally generated business application">
+    <meta name="keywords" content="business, startup, application, enterprise">
+    <meta name="author" content="Strategix AI Pro">
+    <meta property="og:title" content="Business Application">
+    <meta property="og:description" content="AI-generated professional business application">
+    <meta property="og:type" content="website">
+    
+    <meta charset="UTF-8" />
+    <title>To-Do List</title>
+    <!-- Подключаем шрифты Google Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" as="style" onload="this.onload=null; this.rel='stylesheet'"/>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" as="style" onload="this.onload=null; this.rel='stylesheet'"/>
+    
+    <!-- Стили Flexbox & Grid -->
+    <style type="text/css">
+        :root {
+            --primary-color: #3f51b5;
+            --secondary-color: #e9ecef;
+            --accent-color: #ffc107;
+            --font-family-sans-serif: 'Lato', sans-serif;
+            --font-family-serif: 'Roboto Slab', serif;
+        }
+        
+        body { 
+            font-family: var(--font-family-sans-serif);
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);  
+        }
+        
+        header,
+        footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px;
+            color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,.1);
+        }
+        
+        nav ul {
+            list-style-type: none;
+            padding-left: 0;
+            text-align: center;
+        }
+        
+        nav li a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        nav li a.active {
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        /* Главная страница */
+        section.home {
+            max-width: 1200px;
+            margin: auto;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            display: grid;
+            gap: 20px;
+            place-items: center;
+        }
+        
+        h1 {
+            font-size: 3em;
+            line-height: 1.1;
+            letter-spacing: -.05em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        button.add-task-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        form.task-form {
+            display: grid;
+            gap: 10px;
+            padding: 20px;
+            background-color: var(--secondary-color);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.1);
+        }
+        
+        label {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        input[type="text"],
+        select {
+            padding: 10px;
+            border: 1px solid var(--accent-color);
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        input[type="date"] {
+            appearance: none;
+            padding-right: calc(1.2em + 2px);
+        }
+        
+        input[type="submit"] {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        table.tasks-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 10px;
+            border: 1px solid var(--secondary-color);
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--secondary-color);
+        }
+        
+        tfoot {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        /* Mobile styles */
+        @media only screen and (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+            
+            nav.mobile-menu {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background-color: var(--secondary-color);
+                padding: 20px;
+            }
+            
+            nav.mobile-menu ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav.mobile-menu li {
+                margin-bottom: 10px;
+            }
+            
+            nav.mobile-menu li a {
+                text-align: center;
+            }
+        }
+    </style>
+
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+    <style>
+        /* Production optimizations */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Performance optimizations */
+        .lazy-load {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .lazy-loaded {
+            opacity: 1;
+        }
+        
+        /* Print styles */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="mobile-menu">
+            <ul>
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#features">Особенности</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <h1>Ваш личный планировщик задач</h1>
+            <button id="addTaskBtn" class="add-task-btn">Добавить новую задачу</button>
+        </div>
+    </header>
+
+    <section id="home" class="home">
+        <p>Управляйте своими задачами легко и удобно!</p>
+        <form action="#" method="post" class="task-form">
+            <label for="taskName">Название задачи:</label>
+            <input type="text" name="taskName" required placeholder="Назовите свою задачу..." />
+            <label for="priority">Приоритет:</label>
+            <select name="priority">
+                <option value="low">Низкий</option>
+                <option value="medium">Средний</option>
+                <option value="high">Высокий</option>
+            </select>
+            <label for="dueDate">Срок выполнения:</label>
+            <input type="date" name="dueDate" required />
+            <input type="submit" value="Добавить задачу" />
+        </form>
+    </section>
+
+    <table id="tasksTable" class="tasks-table">
+        <thead>
+            <tr>
+                <th>Название</th>
+                <th>Приоритет</th>
+                <th>Дата завершения</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="3"><strong>Всего задач: </strong><span id="totalTasks"></span></td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <footer>
+        <div class="container">
+            <h2>Наши контакты</h2>
+            <address>
+                Адрес компании:<br/>
+                ул. Ленина, д. 100, г. Москва, Россия<br/>
+                Телефон: +7 (495) 123-45-67
+            </address>
+        </div>
+    </footer>
+
+    <script type="module">
+        // Импортируем модули из встроенных библиотек ESM
+        import { createElement } from "https://unpkg.com/lit-element/lit-element.js";
+
+        const TaskForm = createElement('task-form');
+        customElements.define('task-form', TaskForm);
+
+        const TasksList = createElement('tasks-list');
+        customElements.define('tasks-list', TasksList);
+
+        document.querySelector('#addTaskBtn').addEventListener('click', () => {
+            TaskForm.open();
+        });
+
+        window.addEventListener("DOMContentLoaded", async function() {
+            await fetch('/api/tasks')
+                .then(response => response.json())
+                .then(data => {
+                    TasksList.setProperty('data', data);
+                })
+                .catch(error => console.error('Ошибка при загрузке данных:', error));
+        });
+
+        // Пример простого API-обработчика
+        const taskApiHandler = async (method, endpoint, data) => {
+            let requestOptions = {
+                method: method,
+                headers: {'Content-Type': 'application/json'}
+            };
+
+            if (data) {
+                requestOptions.body = JSON.stringify(data);
+            }
+
+            return fetch(endpoint, requestOptions).then(response => response.json());
+        };
+
+        // Обработка формы создания новой задачи
+        TaskForm.addEventListener('new-task-submitted', event => {
+            const newTaskData = event.detail.data;
+            taskApiHandler('POST', '/api/tasks', newTaskData)
+                .then(() => {
+                    TaskForm.close();
+                    TasksList.refresh();
+                }).catch(error => alert(`Не удалось создать задачу: ${error}`));
+        });
+
+        // Удаление задачи через кнопку удаления
+        TasksList.addEventListener('delete-task', event => {
+            const taskId = event.detail.id;
+            taskApiHandler('DELETE', `/api/tasks/${taskId}`)
+                .then(TasksList.refresh)
+                .catch(error => alert(`Не удалось удалить задачу: ${error}`));
+        });
+
+        // Получение общего количества задач
+        TasksList.addEventListener('refresh', () => {
+            taskApiHandler('GET', '/api/tasks-count')
+                .then(result => {
+                    document.getElementById('totalTasks').innerText = result.count;
+                });
+        });
+    </script>
+
+    <!-- Analytics -->
+    <script>
+        // Production error tracking
+        window.addEventListener('error', function(e) {
+            console.error('Application error:', e.error);
+        });
+        
+        // Performance monitoring
+        if ('PerformanceObserver' in window) {
+            const observer = new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) {
+                    console.log('Performance:', entry.name, entry.duration.toFixed(2), 'ms');
+                }
+            });
+            observer.observe({ entryTypes: ['measure', 'paint', 'largest-contentful-paint'] });
+        }
+        
+        // Lazy loading images
+        document.addEventListener('DOMContentLoaded', function() {
+            const lazyImages = document.querySelectorAll('.lazy-load');
+            
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.classList.add('lazy-loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(img => imageObserver.observe(img));
+            } else {
+                // Fallback
+                lazyImages.forEach(img => img.classList.add('lazy-loaded'));
+            }
+        });
+        
+        // Service Worker registration (production only)
+        if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js').then(
+                    function(registration) {
+                        console.log('ServiceWorker registered:', registration.scope);
+                    },
+                    function(err) {
+                        console.log('ServiceWorker registration failed:', err);
+                    }
+                );
+            });
+        }
+    </script>
+</body>
+</html>

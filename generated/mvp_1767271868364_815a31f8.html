@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GreenHomeBox</title>
+  <!-- CSS variables for theme -->
+  <style>
+    :root {
+      --green-color: #7CB94E;
+      --white-color: #fff;
+      --black-color: #333;
+      --light-gray: #eaeaea;
+      --font-family: 'Open Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--light-gray);
+      color: var(--black-color);
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    header {
+      background-color: var(--green-color);
+      color: var(--white-color);
+      text-align: center;
+      padding: 20px;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    nav a {
+      color: var(--white-color);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      padding: 20px;
+    }
+
+    article {
+      border: 1px solid var(--light-gray);
+      padding: 20px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    article:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background-color: var(--green-color);
+      color: var(--white-color);
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Media queries */
+    @media screen and (min-width: 768px) {
+      nav {
+        justify-content: space-between;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Green Home Box</h1>
+    <nav>
+      <a href="#categories">Categories</a>
+      <a href="#recommended">Recommended</a>
+      <a href="#cart">Cart</a>
+      <a href="#blog">Blog</a>
+    </nav>
+  </header>
+
+  <section id="categories">
+    <h2>Categories</h2>
+    <div class="container">
+      <article>
+        <img src="https://via.placeholder.com/250x250.png?text=Biodegradable%20Cutlery" alt="Biodegradable Cutlery" />
+        <p>Biodegradable Cutlery</p>
+      </article>
+      <article>
+        <img src="https://via.placeholder.com/250x250.png?text=Natural%20Cleaning%20Products" alt="Natural Cleaning Products" />
+        <p>Natural Cleaning Products</p>
+      </article>
+      <article>
+        <img src="https://via.placeholder.com/250x250.png?text=Natural%20Cosmetics" alt="Natural Cosmetics" />
+        <p>Natural Cosmetics</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="recommended">
+    <h2>Recommended</h2>
+    <div class="container">
+      <article>
+        <img src="https://via.placeholder.com/250x250.png?text=Best%20Selling%20Product" alt="Best Selling Product" />
+        <p>Best Selling Product</p>
+        <span>Rating: ★★★★☆</span>
+      </article>
+      <article>
+        <img src="https://via.placeholder.com/250x250.png?text=Customer%20Favorite" alt="Customer Favorite" />
+        <p>Customer Favorite</p>
+        <span>Rating: ★★★★★</span>
+      </article>
+    </div>
+  </section>
+
+  <section id="cart">
+    <h2>Cart</h2>
+    <div class="container">
+      <article>
+        <img src="https://via.placeholder.com/250x250.png?text=Item%20in%20Cart" alt="Item in Cart" />
+        <p>Item in Cart</p>
+        <button>Remove</button>
+      </article>
+    </div>
+  </section>
+
+  <section id="blog">
+    <h2>Blog</h2>
+    <div class="container">
+      <article>
+        <img src="https://via.placeholder.com/250x250.png?text=Latest%20Article" alt="Latest Article" />
+        <p>Latest Article</p>
+      </article>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; Green Home Box</p>
+  </footer>
+
+  <script type="module">
+    // Example of module-based JavaScript logic
+    const cartItems = [];
+
+    function addToCart(item) {
+      cartItems.push(item);
+      console.log('Added to cart:', item);
+    }
+
+    document.querySelector('#cart').addEventListener('click', event => {
+      if (event.target.tagName === 'BUTTON') {
+        const index = Array.from(event.target.parentNode.children).indexOf(event.target);
+        cartItems.splice(index, 1);
+        console.log('Removed from cart:', event.target.parentNode.children[index]);
+      }
+    });
+  </script>
+</body>
+</html>
+Этот HTML-файл представляет интернет-магазин экологических товаров с ярким зеленым дизайном. Он включает в себя категории товаров, систему рекомендаций, корзину и блог об экологии. Реализованы семантические элементы, адаптивный дизайн, доступность и отзывчивая навигация. JavaScript реализует базовую функциональность корзины.

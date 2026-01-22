@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финальная сборка приложения</title>
+    <meta name="description" content="Описание приложения">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrainsMono&display=swap">
+    <style>
+        /* CSS стили */
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #337ab7;
+        }
+        
+        a:hover {
+            color: #23527c;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background-color: #337ab7;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .item {
+            width: calc(33.33% - 20px);
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .item:hover {
+            background-color: #f7f7f7;
+        }
+        
+        .footer {
+            background-color: #337ab7;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Финальная сборка приложения</h1>
+        </div>
+        <div class="content">
+            <!-- HTML структура -->
+            <div class="item">HTML структура</div>
+            <div class="item">CSS стили с анимациями</div>
+            <div class="item">JavaScript бизнес-логика</div>
+        </div>
+        <div class="footer">
+            &copy; 2023
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">

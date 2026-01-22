@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Финальная сборка приложения</title>
+    <meta name="description" content="Описание приложения">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrainsMono&display=swap">
+    <style>
+        /* CSS стили */
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #337ab7;
+        }
+        
+        a:hover {
+            color: #23527c;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header {
+            background-color: #337ab7;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin-bottom: 10px;
+        }
+        
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .content p {
+            margin-bottom: 20px;
+        }
+        
+        .footer {
+            background-color: #337ab7;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            clear: both;
+        }
+        
+        /* Анимации и переходы */
+        .animate {
+            animation: animate 2s infinite;
+        }
+        
+        @keyframes animate {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Финальная сборка приложения</h1>
+        </header>
+        <main class="content">
+            <p>Описание приложения.</p>
+            <p>Этот текст будет displayed на странице.</p>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2023. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js">

@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Интернет-магазин экологичных товаров для дома с персонализир | Professional MVP</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <style>
+        /* ============================================
+           ULTIMATE MVP GENERATOR - PROFESSIONAL CSS
+           Project Type: ecommerce
+           Generated: 2026-01-03T14:52:32.640Z
+        ============================================ */
+        
+        :root {
+            /* Color System */
+            --color-primary: #DC2626;
+            --color-secondary: #EA580C;
+            --color-accent: #D97706;
+            --color-background: #F9FAFB;
+            --color-surface: #FFFFFF;
+            --color-text: #1F2937;
+            --color-text-secondary: #6B7280;
+            
+            /* Typography */
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-size-xs: 0.75rem;
+            --font-size-sm: 0.875rem;
+            --font-size-base: 1rem;
+            --font-size-lg: 1.125rem;
+            --font-size-xl: 1.25rem;
+            --font-size-2xl: 1.5rem;
+            --font-size-3xl: 1.875rem;
+            --font-size-4xl: 2.25rem;
+            
+            /* Spacing */
+            --spacing-1: 0.25rem;
+            --spacing-2: 0.5rem;
+            --spacing-3: 0.75rem;
+            --spacing-4: 1rem;
+            --spacing-6: 1.5rem;
+            --spacing-8: 2rem;
+            --spacing-12: 3rem;
+            --spacing-16: 4rem;
+            
+            /* Shadows */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            
+            /* Border Radius */
+            --radius-sm: 0.25rem;
+            --radius: 0.5rem;
+            --radius-md: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+            
+            /* Transitions */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
+            --gradient-secondary: linear-gradient(135deg, #EA580C 0%, #D97706 100%);
+        }
+        
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            line-height: 1.6;
+            color: var(--color-text);
+            background: var(--color-background);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Container */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-4);
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-4);
+        }
+        
+        h1 { font-size: var(--font-size-4xl); }
+        h2 { font-size: var(--font-size-3xl); }
+        h3 { font-size: var(--font-size-2xl); }
+        h4 { font-size: var(--font-size-xl); }
+        
+        p {
+            margin-bottom: var(--spacing-4);
+            color: var(--color-text-secondary);
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--spacing-3) var(--spacing-6);
+            font-weight: 600;
+            font-size: var(--font-size-base);
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            gap: var(--spacing-2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%);
+            transform-origin: 50% 50%;
+        }
+        
+        .btn:focus:not(:active)::after {
+            animation: ripple 1s ease-out;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn-secondary {
+            background: var(--color-surface);
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--color-primary);
+            color: white;
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            border: 1px solid #E5E7EB;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        /* Navigation */
+        .navbar {
+            background: var(--color-surface);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-4) 0;
+        }
+        
+        .nav-logo {
+            font-size: var(--font-size-2xl);
+            font-weight: 900;
+            color: var(--color-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-2);
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-6);
+            list-style: none;
+        }
+        
+        .nav-link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color var(--transition);
+            padding: var(--spacing-2) var(--spacing-3);
+            border-radius: var(--radius);
+        }
+        
+        .nav-link:hover {
+            color: var(--color-primary);
+            background: rgba(79, 70, 229, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: var(--spacing-16) 0;
+            background: var(--gradient-primary);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"><path d="M0,50 C150,150 350,0 500,50 C650,100 850,0 1000,50 L1000,0 L0,0 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 100% 100px;
+            background-repeat: no-repeat;
+            background-position: bottom;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero-title {
+            font-size: var(--font-size-4xl);
+            margin-bottom: var(--spacing-6);
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero-description {
+            font-size: var(--font-size-xl);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-8);
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-8);
+            padding: var(--spacing-16) 0;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: var(--spacing-8);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-6);
+            font-size: var(--font-size-2xl);
+        }
+        
+        /* Dashboard */
+        .dashboard {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: var(--spacing-6);
+            min-height: 600px;
+            margin: var(--spacing-8) 0;
+        }
+        
+        .sidebar {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            box-shadow: var(--shadow);
+        }
+        
+        .main-content {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        
+        /* Data Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .data-table th {
+            background: var(--color-background);
+            padding: var(--spacing-4);
+            text-align: left;
+            font-weight: 600;
+            color: var(--color-text);
+            border-bottom: 2px solid #E5E7EB;
+        }
+        
+        .data-table td {
+            padding: var(--spacing-4);
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        .data-table tr:hover {
+            background: var(--color-background);
+        }
+        
+        /* Forms */
+        .form-group {
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: var(--spacing-2);
+            font-weight: 500;
+            color: var(--color-text);
+        }
+        
+        .form-input,
+        .form-textarea,
+        .form-select {
+            width: 100%;
+            padding: var(--spacing-3) var(--spacing-4);
+            border: 2px solid #E5E7EB;
+            border-radius: var(--radius);
+            font-family: var(--font-family);
+            font-size: var(--font-size-base);
+            transition: all var(--transition);
+            background: var(--color-surface);
+        }
+        
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 1;
+            }
+            20% {
+                transform: scale(25, 25);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: scale(40, 40);
+            }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-slide-in {
+            animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-8);
+        }
+        
+        .stat-card {
+            background: var(--color-surface);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            text-align: center;
+            border: 1px solid #E5E7EB;
+        }
+        
+        .stat-number {
+            font-size: var(--font-size-3xl);
+            font-weight: 800;
+            color: var(--color-primary);
+            margin-bottom: var(--spacing-2);
+        }
+        
+        .stat-label {
+            color: var(--color-text-secondary);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--color-text);
+            color: white;
+            padding: var(--spacing-16) 0;
+            margin-top: var(--spacing-16);
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--spacing-8);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 90%;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block !important;
+                background: none;
+                border: none;
+                color: var(--color-text-secondary);
+                font-size: var(--font-size-2xl);
+                cursor: pointer;
+            }
+            
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-title {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .hero-description {
+                font-size: var(--font-size-lg);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--spacing-3);
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .card {
+                padding: var(--spacing-4);
+            }
+            
+            .hero-title {
+                font-size: var(--font-size-2xl);
+            }
+        }
+        
+        /* Utility Classes */
+        .text-center { text-align: center; }
+        .mt-1 { margin-top: var(--spacing-1); }
+        .mt-2 { margin-top: var(--spacing-2); }
+        .mt-4 { margin-top: var(--spacing-4); }
+        .mt-8 { margin-top: var(--spacing-8); }
+        .mb-1 { margin-bottom: var(--spacing-1); }
+        .mb-2 { margin-bottom: var(--spacing-2); }
+        .mb-4 { margin-bottom: var(--spacing-4); }
+        .mb-8 { margin-bottom: var(--spacing-8); }
+        .p-4 { padding: var(--spacing-4); }
+        .p-8 { padding: var(--spacing-8); }
+        .rounded { border-radius: var(--radius); }
+        .rounded-lg { border-radius: var(--radius-lg); }
+        .shadow { box-shadow: var(--shadow); }
+        .shadow-lg { box-shadow: var(--shadow-lg); }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-2 { gap: var(--spacing-2); }
+        .gap-4 { gap: var(--spacing-4); }
+        .gap-8 { gap: var(--spacing-8); }
+        .w-full { width: 100%; }
+        .h-full { height: 100%; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-rocket"></i>
+                Интернет-магазин эко | MVP
+            </a>
+            
+            <ul class="nav-menu">
+                <li><a href="#features" class="nav-link">Возможности</a></li>
+                <li><a href="#dashboard" class="nav-link">Панель</a></li>
+                <li><a href="#analytics" class="nav-link">Аналитика</a></li>
+                <li><a href="#contact" class="nav-link">Контакты</a></li>
+            </ul>
+            
+            <button class="mobile-menu-toggle" style="display: none;">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content animate-fade-in">
+                <h1 class="hero-title">Интернет-магазин экологичных товаров для дома с персонализированными рекомендациями. Особенности: AR</h1>
+                <p class="hero-description">
+                    Профессиональный MVP прототип с полной функциональностью. 
+                    Создан с помощью Strategix AI Pro Ultimate MVP Generator.
+                    <br>Хочу современный дизайн, мобильную версию, интеграцию с популярными сервисами.
+                </p>
+                <div style="display: flex; gap: var(--spacing-4); justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="startDemo()">
+                        <i class="fas fa-play"></i> Запустить демо
+                    </button>
+                    <button class="btn btn-secondary" onclick="showFeatures()">
+                        <i class="fas fa-eye"></i> Посмотреть возможности
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features -->
+    <section id="features" class="features" style="background: var(--color-background); padding: var(--spacing-16) 0;">
+        <div class="container">
+            <h2 class="text-center">🎯 Основные возможности</h2>
+            <p class="text-center subtitle" style="max-width: 600px; margin: 0 auto var(--spacing-12);">
+                Полнофункциональный прототип с современным дизайном и реальной логикой
+            </p>
+            
+            <div class="features-grid">
+                <div class="card feature-card animate-slide-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Панель управления</h3>
+                    <p>Интуитивная панель с ключевыми метриками и быстрым доступом ко всем функциям</p>
+                </div>
+                
+                <div class="card feature-card animate-slide-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Аналитика в реальном времени</h3>
+                    <p>Интерактивные графики и отчеты для отслеживания ключевых показателей</p>
+                </div>
+                
+                <div class="card feature-card animate-slide-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Гибкие настройки</h3>
+                    <p>Полная кастомизация под ваши бизнес-процессы и требования</p>
+                </div>
+                
+                <div class="card feature-card animate-slide-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Адаптивный дизайн</h3>
+                    <p>Идеальное отображение на всех устройствах и разрешениях экрана</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Dashboard -->
+    <section id="dashboard" style="padding: var(--spacing-16) 0;">
+        <div class="container">
+            <h2 class="text-center">📊 Панель управления</h2>
+            <p class="text-center subtitle" style="max-width: 600px; margin: 0 auto var(--spacing-12);">
+                Центр управления вашим ecommerce проектом
+            </p>
+            
+            <div class="dashboard">
+                <div class="sidebar">
+                    <h3 style="margin-bottom: var(--spacing-6);">Навигация</h3>
+                    <ul style="list-style: none;">
+                        <li style="margin-bottom: var(--spacing-3);">
+                            <a href="#" class="nav-link" style="display: flex; align-items: center; gap: var(--spacing-3);">
+                                <i class="fas fa-home"></i> Главная
+                            </a>
+                        </li>
+                        <li style="margin-bottom: var(--spacing-3);">
+                            <a href="#" class="nav-link" style="display: flex; align-items: center; gap: var(--spacing-3);">
+                                <i class="fas fa-chart-bar"></i> Аналитика
+                            </a>
+                        </li>
+                        <li style="margin-bottom: var(--spacing-3);">
+                            <a href="#" class="nav-link" style="display: flex; align-items: center; gap: var(--spacing-3);">
+                                <i class="fas fa-users"></i> Пользователи
+                            </a>
+                        </li>
+                        <li style="margin-bottom: var(--spacing-3);">
+                            <a href="#" class="nav-link" style="display: flex; align-items: center; gap: var(--spacing-3);">
+                                <i class="fas fa-cog"></i> Настройки
+                            </a>
+                        </li>
+                        <li style="margin-bottom: var(--spacing-3);">
+                            <a href="#" class="nav-link" style="display: flex; align-items: center; gap: var(--spacing-3);">
+                                <i class="fas fa-question-circle"></i> Помощь
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <div style="margin-top: var(--spacing-8);">
+                        <h4 style="margin-bottom: var(--spacing-4);">Быстрые действия</h4>
+                        <button class="btn btn-primary w-full mb-2" onclick="createNewItem()">
+                            <i class="fas fa-plus"></i> Создать новый
+                        </button>
+                        <button class="btn btn-secondary w-full" onclick="exportData()">
+                            <i class="fas fa-download"></i> Экспорт данных
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="main-content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-6);">
+                        <h3>Обзор системы</h3>
+                        <div class="flex gap-2">
+                            <button class="btn btn-primary" onclick="refreshData()">
+                                <i class="fas fa-sync-alt"></i> Обновить
+                            </button>
+                            <button class="btn btn-secondary" onclick="showFilters()">
+                                <i class="fas fa-filter"></i> Фильтры
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statUsers">0</div>
+                            <div class="stat-label">Пользователи</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statRevenue">0</div>
+                            <div class="stat-label">Доход</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statGrowth">0%</div>
+                            <div class="stat-label">Рост</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statConversion">0%</div>
+                            <div class="stat-label">Конверсия</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Chart -->
+                    <div class="card mb-8">
+                        <h4 style="margin-bottom: var(--spacing-6);">Аналитика за последние 7 дней</h4>
+                        <canvas id="analyticsChart" height="300"></canvas>
+                    </div>
+                    
+                    <!-- Data Table -->
+                    <div class="card">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-6);">
+                            <h4>Последние действия</h4>
+                            <button class="btn btn-primary" onclick="addNewRow()">
+                                <i class="fas fa-plus"></i> Добавить
+                            </button>
+                        </div>
+                        
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Название</th>
+                                    <th>Статус</th>
+                                    <th>Дата</th>
+                                    <th>Действия</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activityTable">
+                                <tr>
+                                    <td colspan="5" style="text-align: center; padding: var(--spacing-8); color: var(--color-text-secondary);">
+                                        Загрузка данных...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Interactive Form -->
+                    <div class="card mt-8">
+                        <h4 style="margin-bottom: var(--spacing-6);">Добавить новый элемент</h4>
+                        <form id="newItemForm" onsubmit="handleFormSubmit(event)">
+                            <div class="form-group">
+                                <label class="form-label" for="itemName">Название элемента</label>
+                                <input type="text" id="itemName" class="form-input" placeholder="Введите название" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="itemDescription">Описание</label>
+                                <textarea id="itemDescription" class="form-textarea" placeholder="Подробное описание элемента" rows="3" required></textarea>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="itemPriority">Приоритет</label>
+                                <select id="itemPriority" class="form-select" required>
+                                    <option value="">Выберите приоритет</option>
+                                    <option value="high">Высокий</option>
+                                    <option value="medium">Средний</option>
+                                    <option value="low">Низкий</option>
+                                </select>
+                            </div>
+                            
+                            <div style="display: flex; gap: var(--spacing-4);">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save"></i> Сохранить
+                                </button>
+                                <button type="reset" class="btn btn-secondary">
+                                    <i class="fas fa-times"></i> Очистить
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div id="formMessage" style="margin-top: var(--spacing-4);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 style="color: white; margin-bottom: var(--spacing-4);">
+                        <i class="fas fa-rocket"></i> Интернет-магазин эко | MVP
+                    </h3>
+                    <p style="color: rgba(255, 255, 255, 0.8);">
+                        Профессиональный прототип, сгенерированный с помощью Strategix AI Pro Ultimate MVP Generator
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 style="color: white; margin-bottom: var(--spacing-4);">Контакты</h4>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: var(--spacing-2);">
+                        <i class="fas fa-envelope" style="margin-right: var(--spacing-2);"></i>
+                        contact@интернет-м.com
+                    </p>
+                    <p style="color: rgba(255, 255, 255, 0.8);">
+                        <i class="fas fa-globe" style="margin-right: var(--spacing-2);"></i>
+                        strategix-ai.com
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 style="color: white; margin-bottom: var(--spacing-4);">Технологии</h4>
+                    <div style="color: rgba(255, 255, 255, 0.8);">
+                        <p style="margin-bottom: var(--spacing-2);">• HTML5 семантическая верстка</p>
+                        <p style="margin-bottom: var(--spacing-2);">• CSS3 с CSS переменными</p>
+                        <p style="margin-bottom: var(--spacing-2);">• ES6+ JavaScript</p>
+                        <p>• Chart.js для графиков</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid rgba(255, 255, 255, 0.1); margin-top: var(--spacing-8); padding-top: var(--spacing-8); text-align: center; color: rgba(255, 255, 255, 0.6);">
+                <p>© 2026 Интернет-магазин экологичных т. Все права защищены.</p>
+                <p style="font-size: var(--font-size-sm); margin-top: var(--spacing-2);">
+                    Сгенерировано 03.01.2026 с помощью Strategix AI Pro Ultimate MVP Generator v8.0
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript Application -->
+    <script>
+        // ============================================
+        // ULTIMATE MVP GENERATOR - INTERACTIVE JAVASCRIPT
+        // Project Type: ecommerce
+        // Generated: 2026-01-03T14:52:32.640Z
+        // ============================================
+        
+        class UltimateMVPApp {
+            constructor() {
+                this.state = {
+                    users: 0,
+                    revenue: 0,
+                    growth: 0,
+                    conversion: 0,
+                    activities: [],
+                    chartData: null
+                };
+                
+                this.init();
+            }
+            
+            init() {
+                console.log('🚀 Ultimate MVP App инициализирован');
+                console.log('📊 Project Type:', 'ecommerce');
+                console.log('💡 Business Idea:', 'Интернет-магазин экологичных товаров для дома с персонализированными рекомендациями. Особенности: AR');
+                
+                // Инициализация компонентов
+                this.loadInitialData();
+                this.setupChart();
+                this.setupEventListeners();
+                this.animateStats();
+                
+                // Показать приветственное сообщение
+                this.showNotification('🚀 MVP успешно загружен!', 'success');
+            }
+            
+            loadInitialData() {
+                // Загрузка начальных данных
+                this.state = {
+                    users: Math.floor(Math.random() * 1000) + 500,
+                    revenue: Math.floor(Math.random() * 50000) + 10000,
+                    growth: Math.floor(Math.random() * 100),
+                    conversion: Math.floor(Math.random() * 30) + 10,
+                    activities: this.generateSampleActivities(),
+                    chartData: this.generateChartData()
+                };
+                
+                this.updateUI();
+            }
+            
+            generateSampleActivities() {
+                return [
+                    { id: 1, name: 'Новый пользователь зарегистрирован', status: 'completed', date: new Date().toLocaleDateString() },
+                    { id: 2, name: 'Обновление аналитики', status: 'in_progress', date: new Date().toLocaleDateString() },
+                    { id: 3, name: 'Интеграция с платежной системой', status: 'pending', date: new Date().toLocaleDateString() },
+                    { id: 4, name: 'Оптимизация производительности', status: 'completed', date: new Date().toLocaleDateString() },
+                    { id: 5, name: 'Добавление новых функций', status: 'in_progress', date: new Date().toLocaleDateString() }
+                ];
+            }
+            
+            generateChartData() {
+                const labels = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+                return {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Пользователи',
+                            data: labels.map(() => Math.floor(Math.random() * 1000) + 500),
+                            borderColor: '#DC2626',
+                            backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'Конверсия',
+                            data: labels.map(() => Math.floor(Math.random() * 100) + 10),
+                            borderColor: '#EA580C',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            tension: 0.4,
+                            fill: true
+                        }
+                    ]
+                };
+            }
+            
+            setupChart() {
+                const ctx = document.getElementById('analyticsChart').getContext('2d');
+                
+                if (this.chart) {
+                    this.chart.destroy();
+                }
+                
+                this.chart = new Chart(ctx, {
+                    type: 'line',
+                    data: this.state.chartData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            tooltip: {
+                                mode: 'index',
+                                intersect: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            },
+                            x: {
+                                grid: {
+                                    color: 'rgba(0, 0, 0, 0.05)'
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            setupEventListeners() {
+                // Обработка формы
+                const form = document.getElementById('newItemForm');
+                if (form) {
+                    form.addEventListener('submit', this.handleFormSubmit.bind(this));
+                }
+                
+                // Обработка кнопок
+                document.querySelectorAll('.btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const action = e.target.closest('.btn').getAttribute('onclick');
+                        if (action) {
+                            console.log('🎯 Button clicked:', action);
+                        }
+                    });
+                });
+                
+                // Анимация при скролле
+                this.setupScrollAnimations();
+            }
+            
+            handleFormSubmit(e) {
+                e.preventDefault();
+                
+                const form = e.target;
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                
+                // Валидация
+                if (this.validateForm(data)) {
+                    this.processFormData(data);
+                    this.showNotification('✅ Элемент успешно добавлен!', 'success');
+                    form.reset();
+                    
+                    // Обновить таблицу
+                    this.addActivityToTable(data);
+                } else {
+                    this.showNotification('⚠️ Пожалуйста, заполните все поля корректно', 'error');
+                }
+            }
+            
+            validateForm(data) {
+                return data.itemName && data.itemDescription && data.itemPriority;
+            }
+            
+            processFormData(data) {
+                console.log('📤 Form data processed:', data);
+                
+                // Добавить в список активностей
+                const newActivity = {
+                    id: this.state.activities.length + 1,
+                    name: data.itemName,
+                    status: 'pending',
+                    date: new Date().toLocaleDateString()
+                };
+                
+                this.state.activities.unshift(newActivity);
+                this.updateActivityTable();
+            }
+            
+            addActivityToTable(data) {
+                const table = document.getElementById('activityTable');
+                const newRow = `
+                    <tr>
+                        <td>${this.state.activities.length}</td>
+                        <td>${data.itemName}</td>
+                        <td><span class="status-badge">Новый</span></td>
+                        <td>${new Date().toLocaleDateString()}</td>
+                        <td>
+                            <button class="btn-action" onclick="app.editItem(${this.state.activities.length})">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+                
+                table.innerHTML = newRow + table.innerHTML;
+            }
+            
+            updateActivityTable() {
+                const table = document.getElementById('activityTable');
+                if (!table) return;
+                
+                table.innerHTML = this.state.activities.map(activity => `
+                    <tr>
+                        <td>${activity.id}</td>
+                        <td>${activity.name}</td>
+                        <td>
+                            <span class="status-badge ${this.getStatusClass(activity.status)}">
+                                ${this.getStatusText(activity.status)}
+                            </span>
+                        </td>
+                        <td>${activity.date}</td>
+                        <td>
+                            <div style="display: flex; gap: var(--spacing-2);">
+                                <button class="btn-action" onclick="app.editItem(${activity.id})" title="Редактировать">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-action" onclick="app.deleteItem(${activity.id})" title="Удалить">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+            
+            getStatusClass(status) {
+                const classes = {
+                    'completed': 'status-completed',
+                    'in_progress': 'status-in-progress',
+                    'pending': 'status-pending'
+                };
+                return classes[status] || 'status-pending';
+            }
+            
+            getStatusText(status) {
+                const texts = {
+                    'completed': 'Завершено',
+                    'in_progress': 'В процессе',
+                    'pending': 'Ожидание'
+                };
+                return texts[status] || 'Ожидание';
+            }
+            
+            updateUI() {
+                // Обновить статистику
+                document.getElementById('statUsers').textContent = this.state.users;
+                document.getElementById('statRevenue').textContent = '$' + this.state.revenue.toLocaleString();
+                document.getElementById('statGrowth').textContent = this.state.growth + '%';
+                document.getElementById('statConversion').textContent = this.state.conversion + '%';
+                
+                // Обновить таблицу
+                this.updateActivityTable();
+            }
+            
+            animateStats() {
+                const stats = ['users', 'revenue', 'growth', 'conversion'];
+                
+                stats.forEach(stat => {
+                    const element = document.getElementById('stat' + stat.charAt(0).toUpperCase() + stat.slice(1));
+                    if (element) {
+                        const target = this.state[stat];
+                        this.animateCounter(element, target, stat === 'revenue' ? '$' : '', stat === 'conversion' || stat === 'growth' ? '%' : '');
+                    }
+                });
+            }
+            
+            animateCounter(element, target, prefix = '', suffix = '') {
+                let current = 0;
+                const increment = target / 100;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    
+                    if (element) {
+                        element.textContent = prefix + Math.floor(current).toLocaleString() + suffix;
+                    }
+                }, 20);
+            }
+            
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `notification notification-${type}`;
+                notification.innerHTML = `
+                    <i class="fas ${this.getNotificationIcon(type)}"></i>
+                    <span>${message}</span>
+                    <button class="notification-close" onclick="this.parentElement.remove()">&times;</button>
+                `;
+                
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${this.getNotificationColor(type)};
+                    color: white;
+                    padding: var(--spacing-4) var(--spacing-6);
+                    border-radius: var(--radius);
+                    box-shadow: var(--shadow-lg);
+                    display: flex;
+                    align-items: center;
+                    gap: var(--spacing-3);
+                    z-index: 10000;
+                    animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                    max-width: 400px;
+                `;
+                
+                document.body.appendChild(notification);
+                
+                // Автоматическое скрытие через 5 секунд
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.style.animation = 'slideOutRight 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+                        setTimeout(() => notification.remove(), 300);
+                    }
+                }, 5000);
+            }
+            
+            getNotificationIcon(type) {
+                const icons = {
+                    'success': 'fa-check-circle',
+                    'error': 'fa-exclamation-circle',
+                    'warning': 'fa-exclamation-triangle',
+                    'info': 'fa-info-circle'
+                };
+                return icons[type] || 'fa-info-circle';
+            }
+            
+            getNotificationColor(type) {
+                const colors = {
+                    'success': 'var(--color-secondary)',
+                    'error': '#EF4444',
+                    'warning': 'var(--color-accent)',
+                    'info': 'var(--color-primary)'
+                };
+                return colors[type] || 'var(--color-primary)';
+            }
+            
+            setupScrollAnimations() {
+                // Анимация элементов при скролле
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('animate-fade-in');
+                        }
+                    });
+                }, { threshold: 0.1 });
+                
+                document.querySelectorAll('.card, .feature-card').forEach(el => {
+                    observer.observe(el);
+                });
+            }
+            
+            editItem(id) {
+                const item = this.state.activities.find(a => a.id === id);
+                if (item) {
+                    this.showNotification(`Редактирование элемента: ${item.name}`, 'info');
+                    // Реализация редактирования
+                }
+            }
+            
+            deleteItem(id) {
+                if (confirm('Вы уверены, что хотите удалить этот элемент?')) {
+                    this.state.activities = this.state.activities.filter(a => a.id !== id);
+                    this.updateActivityTable();
+                    this.showNotification('🗑️ Элемент удален', 'success');
+                }
+            }
+            
+            refreshData() {
+                this.showNotification('🔄 Обновление данных...', 'info');
+                
+                // Обновить данные
+                setTimeout(() => {
+                    this.loadInitialData();
+                    this.showNotification('✅ Данные обновлены', 'success');
+                }, 1000);
+            }
+            
+            exportData() {
+                const data = {
+                    businessIdea: 'Интернет-магазин экологичных товаров для дома с персонализированными рекомендациями. Особенности: AR-примерка, подписка на регулярные доставки, система лояльности.',
+                    projectType: 'ecommerce',
+                    stats: this.state,
+                    generatedAt: new Date().toISOString()
+                };
+                
+                const dataStr = JSON.stringify(data, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `mvp-data-${new Date().toISOString().slice(0, 10)}.json`;
+                link.click();
+                
+                URL.revokeObjectURL(url);
+                this.showNotification('📥 Данные экспортированы', 'success');
+            }
+        }
+        
+        // Глобальные функции для вызова из HTML
+        window.startDemo = function() {
+            app.showNotification('🚀 Демо запущено! Исследуйте возможности MVP.', 'success');
+            
+            // Анимация для демонстрации
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        card.style.transform = '';
+                    }, 300);
+                }, index * 100);
+            });
+        };
+        
+        window.showFeatures = function() {
+            const featuresSection = document.getElementById('features');
+            if (featuresSection) {
+                featuresSection.scrollIntoView({ behavior: 'smooth' });
+                app.showNotification('✨ Демонстрация возможностей', 'info');
+            }
+        };
+        
+        window.createNewItem = function() {
+            document.getElementById('itemName').focus();
+            app.showNotification('📝 Готовы к созданию нового элемента', 'info');
+        };
+        
+        window.showFilters = function() {
+            app.showNotification('🔍 Фильтры активированы', 'info');
+            // Реализация фильтров
+        };
+        
+        window.addNewRow = function() {
+            const newItem = {
+                id: app.state.activities.length + 1,
+                name: 'Новая запись ' + (app.state.activities.length + 1),
+                status: 'pending',
+                date: new Date().toLocaleDateString()
+            };
+            
+            app.state.activities.unshift(newItem);
+            app.updateActivityTable();
+            app.showNotification('➕ Новая запись добавлена', 'success');
+        };
+        
+        // Инициализация приложения
+        document.addEventListener('DOMContentLoaded', () => {
+            window.app = new UltimateMVPApp();
+            
+            // Добавить дополнительные стили для анимаций
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideInRight {
+                    from {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                    to {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                }
+                
+                @keyframes slideOutRight {
+                    from {
+                        transform: translateX(0);
+                        opacity: 1;
+                    }
+                    to {
+                        transform: translateX(100%);
+                        opacity: 0;
+                    }
+                }
+                
+                .status-badge {
+                    display: inline-block;
+                    padding: 4px 12px;
+                    border-radius: 12px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                }
+                
+                .status-completed {
+                    background: rgba(16, 185, 129, 0.1);
+                    color: #065F46;
+                    border: 1px solid rgba(16, 185, 129, 0.3);
+                }
+                
+                .status-in-progress {
+                    background: rgba(245, 158, 11, 0.1);
+                    color: #92400E;
+                    border: 1px solid rgba(245, 158, 11, 0.3);
+                }
+                
+                .status-pending {
+                    background: rgba(107, 114, 128, 0.1);
+                    color: #374151;
+                    border: 1px solid rgba(107, 114, 128, 0.3);
+                }
+                
+                .btn-action {
+                    background: none;
+                    border: none;
+                    color: var(--color-text-secondary);
+                    cursor: pointer;
+                    padding: 4px 8px;
+                    border-radius: 4px;
+                    transition: all var(--transition);
+                }
+                
+                .btn-action:hover {
+                    background: var(--color-background);
+                    color: var(--color-primary);
+                }
+                
+                .subtitle {
+                    color: var(--color-text-secondary);
+                    font-size: var(--font-size-lg);
+                }
+                
+                .notification {
+                    font-family: var(--font-family);
+                }
+            `;
+            document.head.appendChild(style);
+            
+            console.log('🎉 Ultimate MVP полностью загружен и готов к работе!');
+        });
+    </script>
+</body>
+</html>

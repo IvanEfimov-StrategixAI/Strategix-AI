@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Generated MVP</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem 0; }
+        .hero { text-align: center; padding: 4rem 0; }
+        .features { padding: 4rem 0; background: #f8fafc; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .feature-card { background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .cta { padding: 4rem 0; text-align: center; background: #2E75B6; color: white; }
+        .footer { padding: 2rem 0; background: #1a202c; color: white; text-align: center; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav style="display: flex; justify-content: space-between; align-items: center;">
+                <div style="font-size: 1.5rem; font-weight: bold;">AI Generated MVP</div>
+                <div>
+                    <a href="#features" style="color: white; margin: 0 1rem; text-decoration: none;">Возможности</a>
+                    <a href="#about" style="color: white; margin: 0 1rem; text-decoration: none;">О проекте</a>
+                    <a href="#contact" style="color: white; margin: 0 1rem; text-decoration: none;">Контакты</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem;">AI Generated MVP</h1>
+                <p style="font-size: 1.2rem; max-width: 600px; margin: 0 auto;">TO-DO лист с dashboard приорретизщацией и возможностью выставления дэдлайнов</p>
+                <button style="margin-top: 2rem; padding: 1rem 2rem; background: #10b981; color: white; border: none; border-radius: 5px; font-size: 1rem; cursor: pointer;">Начать сейчас</button>
+            </div>
+        </section>
+        
+        <section class="features" id="features">
+            <div class="container">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Ключевые возможности</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Инновационное решение</h3>
+                        <p>Передовые технологии для вашего бизнеса</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Простота использования</h3>
+                        <p>Интуитивно понятный интерфейс</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Быстрый запуск</h3>
+                        <p>Начните работу за несколько минут</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="cta" id="contact">
+            <div class="container">
+                <h2 style="margin-bottom: 1rem;">Готовы начать?</h2>
+                <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Присоединяйтесь к сотням успешных предпринимателей</p>
+                <button style="padding: 1rem 2rem; background: white; color: #2E75B6; border: none; border-radius: 5px; font-size: 1rem; font-weight: bold; cursor: pointer;">Попробовать бесплатно</button>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 AI Generated MVP. Все права защищены.</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">MVP сгенерировано Strategix AI Pro</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Простая интерактивность
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                alert('Спасибо за интерес! Функционал в разработке.');
+            });
+        });
+        
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

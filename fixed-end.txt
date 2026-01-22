@@ -1,0 +1,15 @@
+// ФИКС: Закрываем все открытые конструкции 
+} 
+} 
+} 
+ 
+// ГЛАВНАЯ СТРАНИЦА 
+app.get\('\/', \(req, res\) =
+    res.send\('?? Strategix AI Pro работает!'\); 
+}\); 
+ 
+// ЗАПУСК СЕРВЕРА 
+app.listen\(PORT, '0.0.0.0', \(\) =
+    console.log\(\`?? STRATEGIX AI PRO запущен на порту \${PORT}\`\); 
+}\); 
+module.exports = app; 
