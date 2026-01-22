@@ -1,15 +1,15 @@
 { 
-'  "version": 2,' 
-'  "builds": [' 
-'    {' 
-'      "src": "server-fixed-final.js",' 
-'      "use": "@vercel/node"' 
-'    }' 
-'  ],' 
-'  "routes": [' 
-'    {' 
-'      "src": "/(.*)",' 
-'      "dest": "server-fixed-final.js"' 
-'    }' 
-'  ]' 
+  "version": 2, 
+  "builds": [ 
+    { 
+      "src": "server-fixed-final.js", 
+      "use": "@vercel/node" 
+    } 
+  ], 
+  "routes": [ 
+    { 
+      "src": "/(.*)", 
+      "dest": "server-fixed-final.js" 
+    } 
+  ] 
 } 
