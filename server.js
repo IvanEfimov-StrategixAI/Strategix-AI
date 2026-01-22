@@ -332,15 +332,21 @@ const apiLimiter = rateLimit({
 });
 app.use('/api/', apiLimiter);
 
+// ИСПРАВЬТЕ ЭТОТ БЛОК КОДА:
+
 // Создаем папки
 const folders = ['public', 'generated', 'data', 'exports', 'uploads', 'temp'];
-folders.forEach(folder => {
-    const folderPath = path.join(__dirname, folder);
-    if (!fs.existsSync(folderPath)) {
-        fs.ensureDirSync(folderPath);
-        console.log(`📁 Создана папка: ${folder}`);
-    }
-});
+// Закомментируйте этот блок:
+// folders.forEach(folder => {
+//     const folderPath = path.join(__dirname, folder);
+//     if (!fs.existsSync(folderPath)) {
+//         fs.ensureDirSync(folderPath);
+//         console.log(`📁 Создана папка: ${folder}`);
+//     }
+// });
+
+// Вместо этого добавьте:
+console.log('✅ Vercel environment: Skipping folder creation (read-only filesystem)');
 
 app.use(express.static('public'));
 app.use('/generated', express.static('generated'));
